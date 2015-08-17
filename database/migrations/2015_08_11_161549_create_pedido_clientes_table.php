@@ -14,7 +14,7 @@ class CreatePedidoClientesTable extends Migration {
 	{
 		Schema::create('pedido_clientes', function(Blueprint $table)
 		{
-			$table->increments('id');
+		$table->increments('id');
 		$table->Date('Fecha_PedidoC');
 		$table->Time('Hora_PedidoC');
 		$table->String('Direccion', 30);

@@ -30,7 +30,8 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$Articulo = Articulo::all();
+		return \view::make('list',compact('Articulos'));
 	}
 
 }
