@@ -18,6 +18,7 @@ class CreateArticulosTable extends Migration {
 			$table->String('Nombre_Articulo', 20);
 			$table->bigInteger('Existencia');
 			$table->String('Descripcion', 260);
+			$table->timestamps();
 		});
 	}
 

@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Articulos as Articulos;
+use App\Models\articulos as articulos;
 use Illuminate\Http\Request;
 
 class ArticulosController extends Controller {
@@ -15,6 +15,8 @@ class ArticulosController extends Controller {
 	public function index()
 	{
 		//
+		$articulos = articulos::all();
+		return \View::make('list' ,compact('articulos'));
 	}
 
 	/**
@@ -24,7 +26,7 @@ class ArticulosController extends Controller {
 	 */
 	public function create()
 	{
-		return \view::make('new');
+		return \View::make('new');
 	}
 
 	/**
@@ -32,16 +34,13 @@ class ArticulosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $Request)
+	public function store(Request $request)
 	{
 		//
 
-		$Articulo=> new Articulo;
-		$Articulo->Nombre_Articulo=$Request->Nombre_Articulo;
-		$Articulo->Existencia=$Request->Existencia;
-		$Articulo->Descripcion=$Request->Descripcion;
-		$Articulo->save();
-		return redirect('Articulo');
+		$articulos = new articulos;
+		$articulos->create($request->all());
+		return redirect('articulos');
 	}
 
 	/**
@@ -64,6 +63,8 @@ class ArticulosController extends Controller {
 	public function edit($id)
 	{
 		//
+		$articulos = articulos::find($id);
+		 return  \View::make('update', compact('articulos'));
 	}
 
 	/**
@@ -72,9 +73,21 @@ class ArticulosController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(Request $request)
 	{
 		//
+
+		{
+			$articulos = articulos::find($request->id);
+			$articulos->Nombre_Articulo = $request->Nombre_Articulo;
+			$articulos->Existencia = $request->Existencia;
+			$articulos->Descripcion = $request->Descripcion;
+			$articulos->save();
+			return redirect('articulos');
+
+
+
+		}
 	}
 
 	/**
@@ -86,6 +99,16 @@ class ArticulosController extends Controller {
 	public function destroy($id)
 	{
 		//
+		$articulos = articulos::find($id);
+		$articulos->delete();
+		return redirect()->back();
+	}
+
+	public function search(Request $Request )
+	{
+		//
+		$articulos = articulos::where('Nombre_Articulo', 'like', '%' .$Request->Nombre_Articulo. '%')->get();
+		return  \View::make('list', compact('articulos'));
 	}
 
 }

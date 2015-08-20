@@ -7,16 +7,13 @@
 		    {!! Form::open (['route'=> 'articulos.store', 'method'=> 'post', 'novalidate'])!!}
 		    <div class="form-group">
 		    {!! Form::label('full_name', 'Nombre')!!}
-		    {!! Form::text('Nombre_Articulo', null,['class'=> 'form-control', 'required'=> 'required'])!!}
+		    {!! Form::text('Nombre_Fabrica', null,['class'=> 'form-control', 'required'=> 'required'])!!}
 		</div>
 		<div class="form-group">
-		    {!! Form::label('email', 'Existencia')!!}
-		    {!! Form::text('Existencia', null,['class'=> 'form-control', 'required'=> 'required'])!!}
+		    {!! Form::label('email', 'Telefono')!!}
+		    {!! Form::text('Telefono', null,['class'=> 'form-control', 'required'=> 'required'])!!}
 		</div>
-		<div class="form-group">
-		    {!! Form::label('email', 'Descripcion')!!}
-		    {!! Form::text('Descripcion', null,['class'=> 'form-control', 'required'=> 'required'])!!}
-		</div>
+		
 		<div class="form-group">
 			{!! Form::submit('Enviar', ['class'=> 'btn btn-success'])!!}
 		</div>

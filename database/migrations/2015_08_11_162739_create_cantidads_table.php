@@ -18,6 +18,7 @@ class CreateCantidadsTable extends Migration {
 			$table->String('Cantidad_cantidad');
 			$table->integer('Fk_IdFabrica')-> unsigned();
 			$table->integer('Fk_IdArticulo')-> unsigned();
+			$table->timestamps();
 
 			$table->foreign('Fk_IdFabrica')->references('Id')->on('Fabricas');
 			$table->foreign('Fk_IdArticulo')->references('Id')->on('Articulos');

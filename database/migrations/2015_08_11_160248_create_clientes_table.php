@@ -20,6 +20,7 @@ class CreateClientesTable extends Migration {
 			$table->float('Saldo');
 			$table->float('Limite_Credito');
 			$table->float('Descuento');
+			$table->timestamps();
 		});
 	}
 

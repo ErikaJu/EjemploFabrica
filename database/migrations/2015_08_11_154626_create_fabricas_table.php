@@ -17,6 +17,7 @@ class CreateFabricasTable extends Migration {
 			$table->increments('id');
 			$table->string('Nombre_Fabrica', 10);
 			$table->Integer('Telefono');
+			$table->timestamps();
 		});
 	}
 

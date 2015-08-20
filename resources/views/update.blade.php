@@ -4,7 +4,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
-		    {!! Form::open (['route'=> 'articulos.store', 'method'=> 'post', 'novalidate'])!!}
+		    {!! Form::model ($articulos, ['route'=> 'articulos.update', 'method'=> 'put', 'novalidate'])!!}
+
+		    {!! Form::hidden('id', $articulos->id) !!}
 		    <div class="form-group">
 		    {!! Form::label('full_name', 'Nombre')!!}
 		    {!! Form::text('Nombre_Articulo', null,['class'=> 'form-control', 'required'=> 'required'])!!}

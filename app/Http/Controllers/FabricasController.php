@@ -15,6 +15,8 @@ class FabricasController extends Controller {
 	public function index()
 	{
 		//
+		$Fabrica = Fabrica::all();
+		return  \View::make('fabricalist' ,compact('fabrica'));
 	}
 
 	/**
@@ -25,6 +27,7 @@ class FabricasController extends Controller {
 	public function create()
 	{
 		//
+		return  \View::make('fabricas');
 	}
 
 	/**
@@ -36,11 +39,9 @@ class FabricasController extends Controller {
 
 	{
 		
-		$Fabrica=> new Fabrica;
-		$Fabrica->Nombre_Fabrica=$Request->Nombre_Fabrica;
-		$Fabrica->Telefono=$Request->Telefono;
-		$Fabrica->save();
-		return redirect('Fabrica');
+		$Fabrica = new Fabrica;
+		$Fabrica->create($request->all());
+		return redirect('Fabricas');
 
 	}
 
@@ -86,6 +87,13 @@ class FabricasController extends Controller {
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function search(Request $Request )
+	{
+		//
+		$Fabricas = Fabricas::where('Nombre_fabrica', 'like', '%' .$Request->Nombre_fabrica. '%')->get();
+		return  \View::make('fabricalist', compact('fabrica'));
 	}
 
 }

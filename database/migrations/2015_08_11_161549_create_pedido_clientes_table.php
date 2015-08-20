@@ -18,6 +18,7 @@ class CreatePedidoClientesTable extends Migration {
 		$table->Date('Fecha_PedidoC');
 		$table->Time('Hora_PedidoC');
 		$table->String('Direccion', 30);
+		$table->timestamps();
 
 		$table->integer('Fk_IdCliente')-> unsigned();
 
